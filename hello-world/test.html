@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>测试</title>
+    <style media="screen">
+        #demo {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            position: relative;
+            border: 4px solid #333;
+        }
+
+        #demo:after,
+        #demo:before {
+            border: solid transparent;
+            content: ' ';
+            height: 0;
+            left: 100%;
+            position: absolute;
+            width: 0;
+        }
+
+        #demo:after {
+            border-width: 9px;
+            border-left-color: #ccc;
+            top: 15px;
+        }
+
+        #demo:before {
+            border-width: 14px;
+            border-left-color: #333;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo" class="triangle"></div>
+</body>
+<script type="text/javascript">
+    var data = {
+        "code": "0",
+        "result": [{
+            "childs": [{
+                "childs": [{
+                    "id": 1001007,
+                    "name": "M1.3_3001",
+                    "code": "M1.3_3001",
+                    "shortName": "M1.3_3001",
+                    "remark": "M1.3_3001_reamrk",
+                    "orgCustId": 1313001,
+                    "treeCode": "1001003,1001004",
+                    "parentId": 1001004,
+                    "leaf": "N"
+                }, {
+                    "id": 1001006,
+                    "name": "M1.2_3001",
+                    "code": "M1.2_3001",
+                    "shortName": "M1.2_3001",
+                    "remark": "M1.2_3001_reamrk",
+                    "orgCustId": 1313001,
+                    "treeCode": "1001003,1001004",
+                    "parentId": 1001004,
+                    "leaf": "N"
+                }, {
+                    "id": 1001005,
+                    "name": "M1.1_3001",
+                    "code": "M1.1_3001",
+                    "shortName": "M1.1_3001",
+                    "remark": "M1.1_3001_reamrk",
+                    "orgCustId": 1313001,
+                    "treeCode": "1001003,1001004",
+                    "parentId": 1001004,
+                    "leaf": "N"
+                }],
+                "id": 1001004,
+                "name": "M1_3001",
+                "code": "M1_3001",
+                "shortName": "M1_3001",
+                "remark": "M1_3001_reamrk",
+                "orgCustId": 1313001,
+                "treeCode": "1001003",
+                "parentId": 1001003,
+                "leaf": "N"
+            }],
+            "id": 1001003,
+            "name": "管理类_3001",
+            "code": "manage_3001",
+            "shortName": "管理类_3001",
+            "remark": "管理类_3001_reamrk",
+            "orgCustId": 1313001,
+            "treeCode": "",
+            "parentId": -1,
+            "leaf": "N"
+        }, {
+            "childs": [{
+                "id": 1001002,
+                "name": "P2_3001",
+                "code": "P2_3001",
+                "shortName": "P2_3001",
+                "remark": "P2_3001_reamrk",
+                "orgCustId": 1313001,
+                "treeCode": "1001001",
+                "parentId": 1001001,
+                "leaf": "N"
+            }],
+            "id": 1001001,
+            "name": "P1_3001",
+            "code": "P1_3001",
+            "shortName": "P1_3001",
+            "remark": "P1_3001_reamrk",
+            "orgCustId": 1313001,
+            "treeCode": "",
+            "parentId": -1,
+            "leaf": "N"
+        }, {
+            "childs": [{
+                "childs": [{
+                    "id": 1001011,
+                    "name": "P1.2_3002",
+                    "code": "P1.2_3002",
+                    "shortName": "P1.2_3002.3_3001",
+                    "remark": "P1.2_3002_reamrk",
+                    "orgCustId": 1313001,
+                    "treeCode": "1001008,1001009",
+                    "parentId": 1001009,
+                    "leaf": "N"
+                }, {
+                    "id": 1001010,
+                    "name": "P1.1_3002",
+                    "code": "P1.1_3002",
+                    "shortName": "P1.1_3002.3_3001",
+                    "remark": "P1.1_3002_reamrk",
+                    "orgCustId": 1313001,
+                    "treeCode": "1001008,1001009",
+                    "parentId": 1001009,
+                    "leaf": "N"
+                }],
+                "id": 1001009,
+                "name": "P1_3002",
+                "code": "P1_3002",
+                "shortName": "P1_3002.3_3001",
+                "remark": "P1_3002_reamrk",
+                "orgCustId": 1313001,
+                "treeCode": "1001008",
+                "parentId": 1001008,
+                "leaf": "N"
+            }],
+            "id": 1001008,
+            "name": "技术类_3001",
+            "code": "tech_3001",
+            "shortName": "tech_3001.3_3001",
+            "remark": "tech_3001_reamrk",
+            "orgCustId": 1313001,
+            "treeCode": "",
+            "parentId": -1,
+            "leaf": "N"
+        }]
+    };
+    var allChilds = [];
+    var getAllChild = function(childs) {
+        for (var child of childs) {
+            allChilds.push(temp);
+            if (child.childs) {
+                getAllChild(child.childs);
+            }
+        }
+    };
+    (function functionName() {
+        getAllChild(data.result);
+        for (var child of allChilds) {
+            console.log(child)
+        }
+    }());
+</script>
+
+</html>
