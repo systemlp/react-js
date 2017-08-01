@@ -1,17 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {HashRouter, Route} from 'react-router-dom';
+import {render} from 'react-dom';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import App from './App'
 import Home from './home/Home'
 import Hello from './Hello'
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render((
-    <HashRouter>
-        <App>
-            <Route exact path="/" component={Home}/>
-            <Route path="/hello" component={Hello}/>
-        </App>
-    </HashRouter>
+render((
+    <Router history={browserHistory}>
+      <Route component={App}>
+        <Route path="/" component={Home} />
+        <Route path="/Hello" component={Hello} />
+      </Route>
+    </Router>
 ), document.getElementById('root'));
-registerServiceWorker();
+// registerServiceWorker();
