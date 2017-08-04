@@ -42,18 +42,24 @@ class App extends Component {
                         <Menu theme="dark" mode="inline" collapsed={this.state.collapsed} className="layout-menu" onSelect={(item) => {
                             browserHistory.push(item.key)
                         }}>
-                            <SubMenu title={< span > <Icon type="github"/> < span > General < /span></span >}>
+                            <SubMenu title={<span><Icon type="github"/><span>General</span></span >}>
                                 <Menu.Item key="/button">Button 按钮</Menu.Item>
                                 <Menu.Item key="/icon">Icon 图标</Menu.Item>
                             </SubMenu>
-                            <SubMenu title={< span > <Icon type="android"/> < span > Grid < /span></span >}>
+                            <SubMenu title={<span><Icon type="android"/><span>Grid</span></span >}>
                                 <Menu.Item key="/grid">Grid 栅格</Menu.Item>
                                 <Menu.Item key="/layout">Layout 布局</Menu.Item>
+                            </SubMenu>
+                            <SubMenu title={<span><Icon type="dingding" /><span>Navigation</span></span >}>
+                                <Menu.Item key="/affix">Affix 固钉</Menu.Item>
+                            </SubMenu>
+                            <SubMenu title={<span><Icon type="aliwangwang" /><span>Data Entry</span></span >}>
+                                <Menu.Item key="/cascader">Cascader 级联选择</Menu.Item>
                             </SubMenu>
                         </Menu>
                     </Sider>
                     <Content>
-                        <div className="layout-content">{this.props.children}</div>
+                        <div id="layout-content" className="layout-content">{this.props.children}</div>
                     </Content>
                 </Layout>
                 <Footer>footer</Footer>
