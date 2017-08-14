@@ -9,12 +9,14 @@ import _Grid from './grid/_Grid';
 import _Affix from './affix/_Affix';
 import _Cascader from './cascader/_Cascader';
 import Hello from './Hello';
+import ECharts from './echarts/ECharts';
 // import registerServiceWorker from './registerServiceWorker';
 
 render((
     <Router history={browserHistory}>
         <Route component={App}>
             <Route path="/" component={Home}/>
+            <Route path="/echarts" component={ECharts}/>
             <Route path="/button" component={_Button}/>
             <Route path="/icon" component={_Icon}/>
             <Route path="/grid" component={_Grid}/>

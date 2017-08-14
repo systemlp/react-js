@@ -42,6 +42,9 @@ class App extends Component {
                         <Menu theme="dark" mode="inline" collapsed={this.state.collapsed} className="layout-menu" onSelect={(item) => {
                             browserHistory.push(item.key)
                         }}>
+                            <SubMenu title={<span><Icon type="github"/><span>Charts</span></span >}>
+                                <Menu.Item key="/echarts">ECharts 图表</Menu.Item>
+                            </SubMenu>
                             <SubMenu title={<span><Icon type="github"/><span>General</span></span >}>
                                 <Menu.Item key="/button">Button 按钮</Menu.Item>
                                 <Menu.Item key="/icon">Icon 图标</Menu.Item>
