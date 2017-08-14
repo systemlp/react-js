@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Button} from 'antd';
+import {Button, DatePicker} from 'antd';
 
 const {Group: ButtonGroup} = Button;
+let loading;
 
 export default class _Button extends Component {
     constructor(props) {
@@ -11,15 +12,23 @@ export default class _Button extends Component {
         }
     }
     componentDidMount() {
-        setTimeout(() => {
+        loading = setTimeout(() => {
             this.setState({
                 loading: !this.state.loading
             });
         }, 2000);
     }
+    componentWillUnmount(){
+      clearTimeout(loading);
+    }
     render() {
         return (
             <div>
+                <DatePicker onChange={(value) => {
+                  console.log( Date.now());
+                }} disabledDate={(curDate) => {
+                  return curDate && curDate.valueOf() > Date.now();
+                }}/>
                 <h1>按钮</h1>
                 <dl>
                     <dt>

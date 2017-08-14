@@ -20,7 +20,7 @@ export default class ECharts extends Component {
                 xAxis: {
                     data: ["S", "A", "B", "C"]
                 },
-                yAxis: {},
+                yAxis: {name:'（单位：人）'},
                 series: [
                     {
                         name: '理想等级人数',
@@ -30,7 +30,8 @@ export default class ECharts extends Component {
                                 textStyle: {
                                     fontSize: 20,
                                     fontWeight: 'bold'
-                                }
+                                },
+                                formatter: '{c}人'
                             }
                         },
                         type: 'bar',
@@ -43,13 +44,15 @@ export default class ECharts extends Component {
                     }, {
                         name: '实际等级人数',
                         type: 'bar',
+                        barCategoryGap: '36%',
                         label: {
                             normal: {
                                 show: true,
                                 textStyle: {
                                     fontSize: 20,
                                     fontWeight: 'bold'
-                                }
+                                },
+                                formatter: '{c}人'
                             }
                         },
                         itemStyle: {

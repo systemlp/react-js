@@ -4,6 +4,7 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 moment.locale('zh-cn');
 
+let setCurTime;
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -12,9 +13,12 @@ class Home extends Component {
         }
     }
     componentDidMount() {
-        setInterval(() => {
+        setCurTime = setInterval(() => {
             this.setState({curTime: moment().format('a hh:mm:ss')})
-        }, 1000)
+        }, 1000);
+    }
+    componentWillUnmount() {
+        clearInterval(setCurTime);
     }
     render() {
         return (
