@@ -5,7 +5,7 @@ import {Row, Col} from 'antd';
 const DemoBox = ((props) => {
     return (
         <div style={{
-            height: `${props.height}`
+            height: props.height
         }}>{props.children}</div>
     )
 })

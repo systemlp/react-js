@@ -1,5 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import reducer from './reducer';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import App from './App';
 import Home from './home/Home';
@@ -10,22 +13,26 @@ import _Affix from './affix/_Affix';
 import _Cascader from './cascader/_Cascader';
 import Hello from './Hello';
 import ECharts from './echarts/ECharts';
-import WrappedNormalLoginForm from './login/Login';
+import Login from './login/Login';
 // import registerServiceWorker from './registerServiceWorker';
 
+const store = createStore(reducer);
+
 render((
-    <Router history={browserHistory}>
-        <Route path="/" component={App}>
-            <IndexRoute component={Home}/>
-            <Route path="echarts" component={ECharts}/>
-            <Route path="button" component={_Button}/>
-            <Route path="icon" component={_Icon}/>
-            <Route path="grid" component={_Grid}/>
-            <Route path="affix" component={_Affix}/>
-            <Route path="cascader" component={_Cascader}/>
-            <Route path="Hello" component={Hello}/>
-        </Route>
-        <Route path="/login" component={WrappedNormalLoginForm}/>
-    </Router>
+    <Provider store={store}>
+        <Router history={browserHistory}>
+            <Route path="/login" component={Login}/>
+            <Route path="/" component={App}>
+                <IndexRoute component={Home}/>
+                <Route path="echarts" component={ECharts}/>
+                <Route path="button" component={_Button}/>
+                <Route path="icon" component={_Icon}/>
+                <Route path="grid" component={_Grid}/>
+                <Route path="affix" component={_Affix}/>
+                <Route path="cascader" component={_Cascader}/>
+                <Route path="Hello" component={Hello}/>
+            </Route>
+        </Router>
+    </Provider>
 ), document.getElementById('root'));
 // registerServiceWorker();

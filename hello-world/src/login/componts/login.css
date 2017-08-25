@@ -38,7 +38,7 @@
     margin-top: 15px;
 }
 
-.ant-row>div:not(.gutter-row):nth-child(odd), .ant-row-flex>div:not(.gutter-row):nth-child(odd) {
+.login-container .ant-row>div:not(.gutter-row):nth-child(odd), .ant-row-flex>div:not(.gutter-row):nth-child(odd) {
     background: none;
 }
 
