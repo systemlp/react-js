@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
     Row,
     Col,
@@ -9,6 +11,7 @@ import {
     Alert
 } from 'antd';
 import './login.css';
+import { login } from '../redux/actions/login';
 
 const errMsg = {
     nameEmpty: {
@@ -31,17 +34,20 @@ class Login extends Component {
         this.state = {
             userName: '',
             password: '',
-            errMsg: null
+            errMsg: null,
+            // user: {},
         }
     }
     handledLogin = () => {
         const {userName, password} = this.state;
+        const { login } = this.props;
         if (!userName) {
             this.setState({errMsg: errMsg.nameEmpty});
         } else if (!password) {
             this.setState({errMsg: errMsg.passwordEmpty});
         } else {
             if (userName === 'admin' && password === '123456') {
+                login(userName, password);
                 browserHistory.push('/');
             } else {
                 this.setState({errMsg: errMsg.error});
@@ -87,4 +93,16 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    // user: state.login.user,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

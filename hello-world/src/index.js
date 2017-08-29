@@ -13,7 +13,7 @@ import _Affix from './affix/_Affix';
 import _Cascader from './cascader/_Cascader';
 import Hello from './Hello';
 import ECharts from './echarts/ECharts';
-import Login from './login/Login';
+import Login from './login/components/Login';
 // import registerServiceWorker from './registerServiceWorker';
 
 const store = createStore(reducer);

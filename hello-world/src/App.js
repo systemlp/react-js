@@ -5,6 +5,7 @@ import 'antd/dist/antd.css'
 import React, {Component} from 'react';
 import {Layout, Menu, Icon, Breadcrumb} from 'antd';
 import {browserHistory} from 'react-router';
+import { connect } from 'react-redux';
 
 const {Header, Sider, Content, Footer} = Layout;
 const {SubMenu} = Menu;
@@ -23,6 +24,7 @@ class App extends Component {
     }
     componentDidMount() {}
     render() {
+      const {user} = this.props;
         return (
             <Layout>
                 <Header className="layout-header">
@@ -31,7 +33,7 @@ class App extends Component {
                             cursor: 'pointer'
                         }} onClick={this.toIndex} title="首页">
                             <img src={logo} className="app-logo" alt="logo"/>
-                            <span className="app-welcome">欢迎使用React</span>
+                            <span className="app-welcome">欢迎使用React {user.userName}</span>
                         </span>
                     </div>
                 </Header>
@@ -109,4 +111,10 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.login.user
+  }
+}
+
+export default connect(mapStateToProps)(App);
