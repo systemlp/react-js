@@ -22,9 +22,15 @@ class App extends Component {
         this.setState({selectedKeys: []});
         browserHistory.push("/");
     }
+    componentWillMount(){
+      const {user} = this.props;
+      if(!user || !user.userName){
+        browserHistory.push('/login');
+      }
+    }
     componentDidMount() {}
     render() {
-      const {user} = this.props;
+        const {user} = this.props;
         return (
             <Layout>
                 <Header className="layout-header">

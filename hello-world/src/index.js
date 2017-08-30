@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import reducer from './reducer';
+import reducers from './reducer';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import App from './App';
 import Home from './home/Home';
@@ -16,7 +16,7 @@ import ECharts from './echarts/ECharts';
 import Login from './login/components/Login';
 // import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(reducer);
+const store = createStore(reducers);
 
 render((
     <Provider store={store}>

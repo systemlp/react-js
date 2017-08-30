@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+// import { bindActionCreators } from 'redux';
 import {
     Row,
     Col,
@@ -11,7 +11,7 @@ import {
     Alert
 } from 'antd';
 import './login.css';
-import { login } from '../redux/actions/login';
+import {login} from '../redux/actions/login';
 
 const errMsg = {
     nameEmpty: {
@@ -40,14 +40,14 @@ class Login extends Component {
     }
     handledLogin = () => {
         const {userName, password} = this.state;
-        const { login } = this.props;
+        const {dispatch, onLogin, user} = this.props;
         if (!userName) {
             this.setState({errMsg: errMsg.nameEmpty});
         } else if (!password) {
             this.setState({errMsg: errMsg.passwordEmpty});
         } else {
             if (userName === 'admin' && password === '123456') {
-                login(userName, password);
+                onLogin({userName, password});
                 browserHistory.push('/');
             } else {
                 this.setState({errMsg: errMsg.error});
@@ -93,16 +93,12 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = state => {
-  return {
-    // user: state.login.user,
-  }
-}
+const mapStateToProps = (state) => ({user: state.login.user})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    login,
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+    onLogin: (user) => {
+        dispatch(login(user))
+    }
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
